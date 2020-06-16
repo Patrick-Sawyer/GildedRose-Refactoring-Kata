@@ -1,6 +1,6 @@
 # Gilded Rose
 
-Here is my attempt to solve the Gilded Rose challenge. Here is the original repo for the challenge.
+Here is my attempt to solve the Gilded Rose challenge. Here is the original repo for the challenge. Run rspec in the root directory to see test results.
 
 https://github.com/makersacademy/course/blob/master/individual_challenges/gilded_rose.md
 
