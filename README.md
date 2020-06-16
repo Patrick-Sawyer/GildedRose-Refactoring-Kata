@@ -16,4 +16,4 @@ I also tested edge cases, no quality goes above 50, backstage pass tickets drop 
 
 I tested all 'special' item types, when both conjured and non conjured.
 
-Ideally I would have used doubles but I couldn't get the values of the doubles to change when the code tried to change them. Also, part of the challenge specified that we were not to touch the Item Class at all, so I felt it was OK to use Item instances in the tests for the Gilded Rose class.
+Ideally I would have used doubles for the items but I couldn't get the values of the doubles to change when the code tried to change them. Also, part of the challenge specified that we were not to touch the Item Class at all, so I felt it was OK to use Item instances in the tests for the Gilded Rose class.
