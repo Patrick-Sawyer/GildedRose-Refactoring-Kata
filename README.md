@@ -4,7 +4,7 @@ Here is my attempt to solve the Gilded Rose challenge. Here is the original repo
 
 https://github.com/makersacademy/course/blob/master/individual_challenges/gilded_rose.md
 
-I originally tried it in javascript, but changed to ruby half way through. if you navigate to the ruby folder of this repo and run rspec you should see all my tests.
+I originally tried it in javascript, but changed to ruby half way through. If you navigate to the ruby folder of this repo and run rspec you should see all my tests.
 
 ## Approach
 
