@@ -9,8 +9,13 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
+      # run update method as it was before
+
       update(item)
       next unless item.name.include? 'Conjured'
+
+      # if it is conjured run it again, but add another day to sell_in first
+      # dont change the sell_in if Sulfuras
 
       item.sell_in += 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
       update(item)
