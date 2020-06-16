@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GildedRose
+  attr_reader :items
+
   def initialize(items)
     @items = items
   end
@@ -8,7 +10,10 @@ class GildedRose
   def update_quality
     @items.each do |item|
       update(item)
-      update(item) if item.name.include? 'Conjured'
+      next unless item.name.include? 'Conjured'
+
+      item.sell_in += 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
+      update(item)
     end
   end
 
