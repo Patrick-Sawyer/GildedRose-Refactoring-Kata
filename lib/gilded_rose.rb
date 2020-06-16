@@ -25,33 +25,33 @@ class GildedRose
   def update(item)
     if (!item.name.include? 'Aged Brie') && (!item.name.include? 'Backstage passes to a TAFKAL80ETC concert')
       if item.quality > 0
-        item.quality = item.quality - 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
+        item.quality -= 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
       end
     else
       if item.quality < 50
-        item.quality = item.quality + 1
+        item.quality += 1
         if item.name.include? 'Backstage passes to a TAFKAL80ETC concert'
           if item.sell_in < 11
-            item.quality = item.quality + 1 if item.quality < 50
+            item.quality += 1 if item.quality < 50
           end
           if item.sell_in < 6
-            item.quality = item.quality + 1 if item.quality < 50
+            item.quality += 1 if item.quality < 50
           end
         end
       end
     end
-    item.sell_in = item.sell_in - 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
+    item.sell_in -= 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
     if item.sell_in < 0
       if !item.name.include? 'Aged Brie'
         if !item.name.include? 'Backstage passes to a TAFKAL80ETC concert'
           if item.quality > 0
-            item.quality = item.quality - 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
+            item.quality -= 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
           end
         else
-          item.quality = item.quality - item.quality
+          item.quality = 0
         end
       else
-        item.quality = item.quality + 1 if item.quality < 50
+        item.quality += 1 if item.quality < 50
       end
     end
   end
