@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GildedRose
   attr_reader :items
 
