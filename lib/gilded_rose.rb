@@ -9,51 +9,36 @@ class GildedRose
 
   def update_quality
     @items.each do |item|
-      # run update method as it was before
-
+      item.sell_in -= 1
       update(item)
-      next unless item.name.include? 'Conjured'
-
-      # if it is conjured run it again, but add another day to sell_in first
-      # dont change the sell_in if Sulfuras
-
-      item.sell_in += 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
-      update(item)
+      update(item) if item.name.include?("Conjured")
     end
   end
 
   def update(item)
-    if (!item.name.include? 'Aged Brie') && (!item.name.include? 'Backstage passes to a TAFKAL80ETC concert')
-      if item.quality > 0
-        item.quality -= 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
-      end
+    degrade(item) 
+    degrade(item) if item.sell_in < 0 
+  end
+
+  def degrade(item)
+    case 
+    when item.name.include?("Backstage passes")
+      backstage(item)
+    when item.name.include?("Aged Brie")
+      item.quality += 1
+    when item.name.include?("Sulfuras")
+      item.sell_in = 10
     else
-      if item.quality < 50
-        item.quality += 1
-        if item.name.include? 'Backstage passes to a TAFKAL80ETC concert'
-          if item.sell_in < 11
-            item.quality += 1 if item.quality < 50
-          end
-          if item.sell_in < 6
-            item.quality += 1 if item.quality < 50
-          end
-        end
-      end
+      item.quality -= 1
     end
-    item.sell_in -= 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
-    if item.sell_in < 0
-      if !item.name.include? 'Aged Brie'
-        if !item.name.include? 'Backstage passes to a TAFKAL80ETC concert'
-          if item.quality > 0
-            item.quality -= 1 unless item.name.include? 'Sulfuras, Hand of Ragnaros'
-          end
-        else
-          item.quality = 0
-        end
-      else
-        item.quality += 1 if item.quality < 50
-      end
-    end
+    item.quality = 50 if item.quality > 50
+  end
+
+  def backstage(item)
+    item.quality += 1
+    (item.quality += 1) if (item.sell_in < 10)
+    (item.quality += 1) if (item.sell_in < 5)
+    (item.quality = 0) if (item.sell_in < 0)
   end
 end
 
